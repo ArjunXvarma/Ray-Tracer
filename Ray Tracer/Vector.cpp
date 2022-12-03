@@ -7,6 +7,10 @@ inline float sqr(float x) {
 Vector::Vector() 
 	: x(0.0f), y(0.0f), z(0.0f) {}
 
+Vector::~Vector() {
+
+}
+
 Vector::Vector(const Vector& v) 
 	: x(v.x), y(v.y), z(v.z) {}
 
@@ -17,10 +21,10 @@ Vector::Vector(float a)
 	: x(a), y(a), z(a) {}
 
 inline float Vector::magnitude() {
-	return sqrt(magnitudeSquare());
+	return sqrt(magnitudeSquared());
 }
 
-inline float Vector::magnitudeSquare() {
+inline float Vector::magnitudeSquared() {
 	return sqr(x) + sqr(y) + sqr(z);
 }
 

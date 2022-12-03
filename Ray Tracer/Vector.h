@@ -17,7 +17,7 @@ public:
 	virtual ~Vector();
 
 	inline float magnitude();
-	inline float magnitudeSquare();
+	inline float magnitudeSquared();
 
 	float normalise();
 	Vector normalised();
