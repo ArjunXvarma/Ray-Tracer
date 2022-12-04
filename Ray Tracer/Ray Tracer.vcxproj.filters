@@ -21,13 +21,7 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Intersection.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="Sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +32,7 @@
     <ClInclude Include="Ray.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Intersection.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="Sphere.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

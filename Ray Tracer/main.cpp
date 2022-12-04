@@ -1,22 +1,54 @@
-// Ray Tracer.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include<fstream>
+#include<cmath>
+#include<iostream>
 
-#include<bits/stdc++.h>
-#include "Vector.h"
+#include "Ray.h"
+#include "Sphere.h"
 
-using namespace std;
-
-int main() {
-    
+void clamp255(Vector& col) {
+    col.x = (col.x > 255) ? 255 : (col.x < 0) ? 0 : col.x;
+    col.y = (col.y > 255) ? 255 : (col.y < 0) ? 0 : col.y;
+    col.z = (col.z > 255) ? 255 : (col.z < 0) ? 0 : col.z;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int main() {
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    const int H = 500;
+    const int W = 500;
+
+    FILE* output;
+
+    const Vector white(255, 255, 255);
+    const Vector black(0, 0, 0);
+    const Vector red(255, 0, 0);
+    const Vector orange(249, 127, 81);
+    const Vector blue(27, 156, 252);
+    const Vector yellow(234, 181, 67);
+
+    const Sphere sphere(Vector(W * 0.5, H * 0.5, 69), 150);
+    const Sphere light(Vector(50, 0, 20), 1);
+
+    freopen_s(&output, "out.ppm", "w", stdout);
+    std::cout << "P3\n" << W << ' ' << H << ' ' << "255\n";
+
+    double t;
+    Vector pix_col(black);
+
+    for (int y = 0; y < H; ++y) {
+        for (int x = 0; x < W; ++x) {
+            pix_col = black;
+
+            const Ray ray(Vector(x, y, 0), Vector(0, 0, 1));
+            if (sphere.intersect(ray, t)) {
+                const Vector pi = ray.origin + ray.direction * t;
+                const Vector L = light.center - pi;
+                const Vector N = sphere.getNormal(pi);
+                const double dt = dot(L.normalize(), N.normalize());
+
+                pix_col = (yellow + white * dt) * 0.5;
+                clamp255(pix_col);
+            }
+            std::cout << (int)pix_col.x << ' ' << (int)pix_col.y << ' ' << (int)pix_col.z << '\n';
+        }
+    }
+}

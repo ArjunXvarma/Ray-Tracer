@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Vector.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,19 +136,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Intersection.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="Vector.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Intersection.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="Vector.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
